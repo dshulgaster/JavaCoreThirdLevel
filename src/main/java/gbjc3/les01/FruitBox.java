@@ -22,7 +22,10 @@ public class Box <T extends Fruit> {
     }
 
     public boolean compare(Box box2) {
-        return getWeight() == box2.getWeight();
+        //return getWeight() == box2.getWeight();
+        //Нельзя сравнить типы float и double через знак == из-за ошибки округления.
+        // Для сравнения нужно проверить, что разность чисел меньше 0.001. В остальном отлично
+        return (getWeight() - box2.getWeight() < 0.001);
     }
 
     public void moveFruits(Box<T> toBox){
