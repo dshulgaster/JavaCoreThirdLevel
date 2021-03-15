@@ -6,8 +6,7 @@ import java.util.List;
 // Класс FruitBox, в который можно складывать фрукты.
 // Коробки условно сортируются по типу фрукта, поэтому в одну коробку нельзя сложить и яблоки, и апельсины;
 
-// Поменял класс Box на FruitBox, т.к. речь о фруктовых коробках.
-// Возможно, нужно бы добавить родителя Box...
+// Поменял класс Box на FruitBox, т.к. речь о фруктовых коробках. Возможно, нужно бы добавить родителя Box?
 public class FruitBox<T extends Fruit> {
     private List <T> fruitBox = new ArrayList<>();
 
@@ -26,8 +25,7 @@ public class FruitBox<T extends Fruit> {
     public boolean compare(FruitBox fruitBox2) {
         //return getWeight() == fruitBox2.getWeight();
         //Нельзя сравнить типы float и double через знак == из-за ошибки округления.
-        // Для сравнения нужно проверить, что разность чисел меньше 0.001. В остальном отлично
-        return (getWeight() - fruitBox2.getWeight() < 0.001);
+        return (Math.abs(this.getWeight() - fruitBox2.getWeight()) < 0.001);
     }
 
     public void moveFruits(FruitBox<T> toFruitBox){
