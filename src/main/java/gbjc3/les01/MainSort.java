@@ -5,36 +5,34 @@ package gbjc3.les01;
 
 public class MainSort {
     public static void main(String[] args) {
-        final int NUM_APPLE = 12;
-        final int NUM_ORANGE = 5;
+        final int NUM_APPLE = 15;
+        final int NUM_ORANGE = 6;
 
-        final FruitBox<Apple> appleFruitBox = new FruitBox<>();
+        final FruitBox<Apple> appleFruitBox = new FruitBox<>(10);
         for (int i = 0; i < NUM_APPLE; i++) {
             appleFruitBox.add(new Apple());
         }
-        final double appleBoxWeight = appleFruitBox.getWeight();
-        System.out.println("Вес коробки с яблоками: " + appleBoxWeight);
+        System.out.println("Вес коробки с яблоками: " + appleFruitBox.getWeight());
 
-        final FruitBox<Orange> orangeFruitBox = new FruitBox<>();
+        final FruitBox<Orange> orangeFruitBox = new FruitBox<>(15);
         for (int i = 0; i < NUM_ORANGE; i++) {
             orangeFruitBox.add(new Orange());
         }
-        final double orangeBoxWeight = orangeFruitBox.getWeight();
-        System.out.println("Вес коробки с апельсинами: " + orangeBoxWeight);
-
+        System.out.println("Вес коробки с апельсинами: " + orangeFruitBox.getWeight());
         System.out.println("Коробки равны по весу?  " + appleFruitBox.compare(orangeFruitBox) + "\n");
 
-        System.out.println("Создаем новую коробку, добавляем в нее 3 апельсина и " +
-                "пересыпаем в нее 3 апельсина из старой коробки");
-        final FruitBox<Orange> orangeFruitBox2 = new FruitBox<>();
-        for (int i = 0; i < 3; i++) {
+        System.out.println("Создаем новую коробку, добавляем в нее 4 апельсина...");
+        final FruitBox<Orange> orangeFruitBox2 = new FruitBox<>(10);
+        for (int i = 0; i < 4; i++) {
             orangeFruitBox2.add(new Orange());
         }
+        System.out.println("Вес новой коробки с апельсинами: " + orangeFruitBox2.getWeight());
+        System.out.println("\nПересыпаем в нее все апельсины из старой коробки...");
         orangeFruitBox.moveFruits(orangeFruitBox2);
-        final double orangeBoxWeightTwo = orangeFruitBox2.getWeight();
 
-        System.out.println("Вес коробки с яблоками: " + appleBoxWeight);
-        System.out.println("Вес коробки с апельсинами: " + orangeBoxWeightTwo);
+        System.out.println("Вес старой коробки с яблоками: " + appleFruitBox.getWeight());
+        System.out.println("Вес старой коробки с апельсинами: " + orangeFruitBox.getWeight());
+        System.out.println("Вес новой коробки с апельсинами: " + orangeFruitBox2.getWeight());
         System.out.println("Коробки равны по весу?  " + appleFruitBox.compare(orangeFruitBox2));
     }
 }
